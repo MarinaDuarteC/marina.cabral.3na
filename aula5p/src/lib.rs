@@ -14,18 +14,18 @@ impl Node {
     }
 }
 
-// Estrutura para a Árvore Binária de Busca (BST)
+
 struct BST {
     root: Option<Box<Node>>,
 }
 
 impl BST {
-    // Criar uma nova árvore vazia
+   
     fn new() -> Self {
         BST { root: None }
     }
     
-    // Verificar se a árvore está vazia
+    
     fn is_empty(&self) -> bool {
         self.root.is_none()
     }
@@ -35,7 +35,7 @@ impl BST {
         self.root = Self::insert_recursive(self.root.take(), value);
     }
     
-    // Função recursiva para inserir um valor
+    
     fn insert_recursive(node: Option<Box<Node>>, value: i32) -> Option<Box<Node>> {
         match node {
             Some(mut n) => {
@@ -50,12 +50,12 @@ impl BST {
         }
     }
     
-    // Buscar um valor na árvore
+    
     fn search(&self, value: i32) -> bool {
         Self::search_recursive(&self.root, value)
     }
 
-    // Função recursiva para buscar um valor
+    
     fn search_recursive(node: &Option<Box<Node>>, value: i32) -> bool {
         match node {
             Some(n) => {
@@ -78,30 +78,30 @@ mod bst_tests {
     
     #[test]
     fn test_bst_new_and_empty() {
-        // Teste 1: Criar uma nova árvore e verificar se está vazia
+        
         let bst = BST::new();
         assert!(bst.is_empty());
     }
     
     #[test]
     fn test_bst_insert_and_search() {
-        // Teste 2: Inserir elementos e verificar se estão na árvore
+        
         let mut bst = BST::new();
         
-        // Inserir alguns valores
+        
         bst.insert(10);
         bst.insert(5);
         bst.insert(15);
         
-        // Verificar se os valores inseridos estão na árvore
+        
         assert!(bst.search(10));
         assert!(bst.search(5));
         assert!(bst.search(15));
         
-        // Verificar que um valor não inserido não está na árvore
+        
         assert!(!bst.search(20));
         
-        // A árvore não deve mais estar vazia
+        
         assert!(!bst.is_empty());
     }
 }
